@@ -315,7 +315,7 @@ body {
 
 .scroll-prompt {
   position: absolute;
-  bottom: 3rem;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -404,7 +404,7 @@ body {
    ============================================ */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-top: 3rem;
 }
@@ -1040,7 +1040,7 @@ footer a:hover { color: var(--text-primary); }
   .card-grid { grid-template-columns: 1fr; }
   .briefing-grid { grid-template-columns: 1fr; }
   .pa-summary, .pa-detail-inner { padding-left: 1.5rem; }
-  .stats-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-svg-wrap { width: 200px; height: 200px; }
 }
 @media (max-width: 600px) {
@@ -1048,6 +1048,7 @@ footer a:hover { color: var(--text-primary); }
   body { font-size: 16px; }
   .container { padding: 0 1.25rem; }
   .stat-number { font-size: 2.5rem; }
+  .stats-grid { grid-template-columns: 1fr; }
   .pullquote { padding: 4rem 1.5rem; }
   .pullquote-mark { font-size: 5rem; }
 }
@@ -1175,14 +1176,14 @@ footer a:hover { color: var(--text-primary); }
         <div class="stat-context">A 27-year-old vulnerability in OpenBSD — an OS known primarily for its security — found and patched.</div>
       </div>
       <div class="stat-card reveal" style="transition-delay:0.3s">
-        <div class="stat-number"><span class="accent">250+</span></div>
-        <div class="stat-label">CISOs who redlined this</div>
-        <div class="stat-context">Edited live over one weekend by security leaders from Google, Atlassian, Netflix, NFL, Wells Fargo, and dozens more.</div>
+        <div class="stat-number"><span class="accent">500+</span></div>
+        <div class="stat-label">High-severity vulns · Pre-Mythos</div>
+        <div class="stat-context">Claude Opus 4.6 alone reported 500+ high-severity vulnerabilities in open source software by February 2026 — before Mythos even existed.</div>
       </div>
       <div class="stat-card teal-accent reveal" style="transition-delay:0.35s">
-        <div class="stat-number">$<span class="teal">100</span>M</div>
-        <div class="stat-label">Glasswing credits</div>
-        <div class="stat-context">Anthropic committed $100M in model credits to fund defensive security research through Project Glasswing.</div>
+        <div class="stat-number"><span class="teal">8</span> min</div>
+        <div class="stat-label">AI attack → admin access</div>
+        <div class="stat-context">Sysdig documented an AI-based attack that reached administrator-level access in eight minutes. Start to finish.</div>
       </div>
     </div>
   </div>
@@ -1279,101 +1280,101 @@ footer a:hover { color: var(--text-primary); }
       <div class="chart-title">Average Days from Disclosure to Working Exploit</div>
       <div class="chart-subtitle">Source: Zero Day Clock · Editorial reconstruction from briefing data</div>
       <div class="chart-svg-wrap">
-        <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:900px;">
+        <svg viewBox="0 0 900 430" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:900px;">
+          <defs>
+            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#f5a623"/>
+              <stop offset="50%" stop-color="#ff6b35"/>
+              <stop offset="100%" stop-color="#ff2d55"/>
+            </linearGradient>
+            <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255,45,85,0.12)"/>
+              <stop offset="100%" stop-color="rgba(255,45,85,0)"/>
+            </linearGradient>
+          </defs>
+
           <!-- grid lines -->
           <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
             <line x1="80" y1="50" x2="860" y2="50"/>
-            <line x1="80" y1="110" x2="860" y2="110"/>
-            <line x1="80" y1="170" x2="860" y2="170"/>
-            <line x1="80" y1="230" x2="860" y2="230"/>
-            <line x1="80" y1="290" x2="860" y2="290"/>
-            <line x1="80" y1="350" x2="860" y2="350"/>
+            <line x1="80" y1="103" x2="860" y2="103"/>
+            <line x1="80" y1="157" x2="860" y2="157"/>
+            <line x1="80" y1="210" x2="860" y2="210"/>
+            <line x1="80" y1="263" x2="860" y2="263"/>
+            <line x1="80" y1="317" x2="860" y2="317"/>
+            <line x1="80" y1="370" x2="860" y2="370"/>
           </g>
+
           <!-- y-axis labels -->
           <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#5a5a6a" text-anchor="end">
             <text x="72" y="54">60d</text>
-            <text x="72" y="114">50d</text>
-            <text x="72" y="174">40d</text>
-            <text x="72" y="234">30d</text>
-            <text x="72" y="294">20d</text>
-            <text x="72" y="354">10d</text>
+            <text x="72" y="107">50d</text>
+            <text x="72" y="161">40d</text>
+            <text x="72" y="214">30d</text>
+            <text x="72" y="267">20d</text>
+            <text x="72" y="321">10d</text>
+            <text x="72" y="374">0d</text>
           </g>
+
           <!-- x-axis labels -->
           <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#5a5a6a" text-anchor="middle">
-            <text x="130" y="385">2018</text>
-            <text x="243" y="385">2019</text>
-            <text x="356" y="385">2020</text>
-            <text x="469" y="385">2021</text>
-            <text x="582" y="385">2022</text>
-            <text x="695" y="385">2023</text>
-            <text x="790" y="385">2024</text>
-            <text x="850" y="385">2026</text>
+            <text x="110" y="392">2018</text>
+            <text x="201" y="392">2019</text>
+            <text x="293" y="392">2020</text>
+            <text x="384" y="392">2021</text>
+            <text x="475" y="392">2022</text>
+            <text x="566" y="392">2023</text>
+            <text x="658" y="392">2024</text>
+            <text x="749" y="392">2025</text>
+            <text x="840" y="392">2026</text>
           </g>
-          <!-- zero line -->
-          <line x1="80" y1="370" x2="860" y2="370" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-          <!-- the data line -->
+
+          <!-- area fill (behind line) -->
+          <polygon
+            points="110,66 201,135 293,146 384,215 475,274 566,317 658,343 749,359 840,367 840,370 110,370"
+            fill="url(#areaGrad)"/>
+
+          <!-- the data line — 9 points, 2018–2026 -->
           <polyline
-            points="130,80 243,95 356,120 469,170 582,240 695,290 790,335 850,365"
+            points="110,66 201,135 293,146 384,215 475,274 566,317 658,343 749,359 840,367"
             fill="none"
             stroke="url(#lineGrad)"
             stroke-width="3"
             stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <defs>
-            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#f5a623"/>
-              <stop offset="60%" stop-color="#ff2d55"/>
-              <stop offset="100%" stop-color="#ff2d55"/>
-            </linearGradient>
-          </defs>
-          <!-- area fill -->
-          <polygon
-            points="130,80 243,95 356,120 469,170 582,240 695,290 790,335 850,365 850,370 130,370"
-            fill="url(#areaGrad)"
-          />
-          <defs>
-            <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="rgba(255,45,85,0.15)"/>
-              <stop offset="100%" stop-color="rgba(255,45,85,0)"/>
-            </linearGradient>
-          </defs>
-          <!-- data points -->
-          <g>
-            <circle cx="130" cy="80" r="5" fill="#f5a623" stroke="#0a0a12" stroke-width="2"/>
-            <circle cx="243" cy="95" r="5" fill="#f5a623" stroke="#0a0a12" stroke-width="2"/>
-            <circle cx="356" cy="120" r="4" fill="#f5a623" stroke="#0a0a12" stroke-width="2"/>
-            <circle cx="469" cy="170" r="4" fill="#ff6b35" stroke="#0a0a12" stroke-width="2"/>
-            <circle cx="582" cy="240" r="4" fill="#ff4d45" stroke="#0a0a12" stroke-width="2"/>
-            <circle cx="695" cy="290" r="4" fill="#ff2d55" stroke="#0a0a12" stroke-width="2"/>
-            <circle cx="790" cy="335" r="4" fill="#ff2d55" stroke="#0a0a12" stroke-width="2"/>
-            <circle cx="850" cy="365" r="7" fill="#ff2d55" stroke="#ff2d55" stroke-width="3" opacity="0.5"/>
-            <circle cx="850" cy="365" r="4" fill="#ff2d55"/>
-          </g>
-          <!-- annotations -->
-          <!-- 2018 annotation -->
-          <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#8a8a9a">
-            <text x="135" y="68">~57 days</text>
-          </g>
-          <!-- 2021 inflection -->
-          <line x1="469" y1="175" x2="469" y2="210" stroke="rgba(245,166,35,0.4)" stroke-width="1" stroke-dasharray="3 3"/>
+            stroke-linejoin="round"/>
+
+          <!-- ANNOTATED DATA POINTS ONLY -->
+
+          <!-- 2018 · ~57 days -->
+          <circle cx="110" cy="66" r="5" fill="#f5a623" stroke="var(--bg-card)" stroke-width="2"/>
+          <line x1="110" y1="60" x2="110" y2="42" stroke="rgba(245,166,35,0.4)" stroke-width="1"/>
+          <text x="120" y="39" font-family="IBM Plex Mono, monospace" font-size="10" fill="#f5a623">~57 days</text>
+
+          <!-- 2021 · ~29 days · AI-assisted fuzzing enters mainstream -->
+          <circle cx="384" cy="215" r="5" fill="#ff6b35" stroke="var(--bg-card)" stroke-width="2"/>
+          <line x1="384" y1="209" x2="384" y2="155" stroke="rgba(245,166,35,0.4)" stroke-width="1"/>
           <g font-family="Source Serif 4, serif" font-size="11" fill="#f5a623" font-style="italic">
-            <text x="478" y="210">AI-assisted fuzzing</text>
-            <text x="478" y="224">enters mainstream</text>
+            <text x="394" y="150">AI-assisted fuzzing</text>
+            <text x="394" y="164">enters mainstream</text>
           </g>
-          <!-- 2025 annotation -->
-          <line x1="790" y1="330" x2="750" y2="298" stroke="rgba(255,45,85,0.3)" stroke-width="1"/>
+
+          <!-- 2025 · ~2 days · XBOW, Big Sleep, DARPA AIxCC, Opus 4.6 -->
+          <circle cx="749" cy="359" r="5" fill="#ff2d55" stroke="var(--bg-card)" stroke-width="2"/>
+          <line x1="749" y1="353" x2="749" y2="245" stroke="rgba(255,45,85,0.35)" stroke-width="1"/>
           <g font-family="Source Serif 4, serif" font-size="11" fill="#ff2d55" font-style="italic">
-            <text x="680" y="292">XBOW, Big Sleep,</text>
-            <text x="680" y="306">DARPA AIxCC</text>
+            <text x="710" y="236" text-anchor="middle">XBOW, Big Sleep,</text>
+            <text x="710" y="250" text-anchor="middle">DARPA AIxCC, Opus 4.6</text>
           </g>
-          <!-- 2026 terminal annotation -->
-          <line x1="850" y1="358" x2="820" y2="330" stroke="rgba(255,45,85,0.5)" stroke-width="1"/>
-          <rect x="740" y="310" width="78" height="22" rx="2" fill="rgba(255,45,85,0.15)" stroke="rgba(255,45,85,0.3)" stroke-width="1"/>
-          <text x="779" y="325" font-family="IBM Plex Mono, monospace" font-size="11" fill="#ff2d55" text-anchor="middle" font-weight="600">&lt; 1 DAY</text>
-          <!-- editorial box -->
-          <rect x="100" y="395" width="760" height="20" rx="0" fill="rgba(255,255,255,0.02)"/>
-          <text x="480" y="409" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5a5a6a" text-anchor="middle">Each patch is now an exploit blueprint. AI accelerates patch-diffing and reverse engineering of fixes.</text>
+
+          <!-- 2026 · <1 day · Mythos -->
+          <circle cx="840" cy="367" r="7" fill="#ff2d55" stroke="#ff2d55" stroke-width="3" opacity="0.4"/>
+          <circle cx="840" cy="367" r="4" fill="#ff2d55"/>
+          <line x1="840" y1="361" x2="840" y2="305" stroke="rgba(255,45,85,0.5)" stroke-width="1"/>
+          <rect x="801" y="281" width="78" height="22" rx="2" fill="rgba(255,45,85,0.15)" stroke="rgba(255,45,85,0.3)" stroke-width="1"/>
+          <text x="840" y="296" font-family="IBM Plex Mono, monospace" font-size="11" fill="#ff2d55" text-anchor="middle" font-weight="600">&lt; 1 DAY</text>
+
+          <!-- editorial note -->
+          <rect x="100" y="405" width="760" height="20" rx="0" fill="rgba(255,255,255,0.02)"/>
+          <text x="480" y="418" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5a5a6a" text-anchor="middle">Each patch is now an exploit blueprint. AI accelerates patch-diffing and reverse engineering of fixes.</text>
         </svg>
       </div>
     </div>
@@ -1755,11 +1756,18 @@ footer a:hover { color: var(--text-primary); }
   </div>
 </section>
 
+<!-- PULLQUOTE — EXPLOIT BLUEPRINT -->
+<div class="pullquote reveal">
+  <span class="pullquote-mark">"</span>
+  <p class="pullquote-text">Each patch also becomes an exploit blueprint, as AI accelerates patch-diffing and reverse engineering of fixes. Responsible disclosure just became an attacker tutorial service.</p>
+  <p class="pullquote-attr">— Risk 01: Accelerated Threat Exploitation</p>
+</div>
+
 <!-- PULLQUOTE 4 -->
 <div class="pullquote teal-q reveal">
   <span class="pullquote-mark">"</span>
-  <p class="pullquote-text">Using a coding agent is now easier than using Excel. All you need to know is English.</p>
-  <p class="pullquote-attr">— Section IV, The Mythos-Ready Security Program</p>
+  <p class="pullquote-text">The time available for action is shrinking. Long-term goals should be considered a quarter away at most.</p>
+  <p class="pullquote-attr">— The Shrinking Time Horizon, Section IV</p>
 </div>
 
 <!-- ============================================
@@ -2028,6 +2036,13 @@ footer a:hover { color: var(--text-primary); }
     </div>
   </div>
 </section>
+
+<!-- PULLQUOTE — CAUGHT IN A VICE -->
+<div class="pullquote teal-q reveal">
+  <span class="pullquote-mark">"</span>
+  <p class="pullquote-text">Security teams are caught in a vice: AI is simultaneously accelerating the volume of vulnerabilities they must respond to, the volume of code their organisations are shipping, and expanding the attack surface.</p>
+  <p class="pullquote-attr">— The Human Cost, Section IV</p>
+</div>
 
 <!-- PULLQUOTE 5 -->
 <div class="pullquote reveal">
